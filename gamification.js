@@ -12,7 +12,7 @@ const motivationalQuotes = [
     "Believe you can and you're halfway there."
 ];
 
-// Badge Requirements
+
 const badgeRequirements = {
     steps: 10000, // Daily step goal
     water: 8,     // Glasses of water
