@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fyrefit - Your Personal Fitness Tracker</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                <span>FyreFit</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#dashboard" class="active">Dashboard</a></li>
+                <li><a href="#activity">Activity</a></li>
+                <li><a href="#nutrition">Nutrition</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <h2>Dashboard</h2>
+            <!-- Motivational Quote -->
+            <div class="card quote-card">
+                <div class="quote-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p id="motivational-quote">Loading your daily motivation...</p>
+                    <i class="fas fa-quote-right"></i>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <!-- Activity Summary -->
+                <div class="card">
+                    <h3>Today's Activity</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <i class="fas fa-shoe-prints"></i>
+                            <span id="total-steps">0</span>
+                            <span>steps</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-fire"></i>
+                            <span id="total-calories">0</span>
+                            <span>calories</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrition Summary -->
+                <div class="card">
+                    <h3>Today's Nutrition</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <i class="fas fa-utensils"></i>
+                            <span id="total-food-calories">0</span>
+                            <span>calories</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-glass-water"></i>
+                            <span id="total-water">0</span>
+                            <span>glasses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bars -->
+                <div class="card">
+                    <h3>Daily Progress</h3>
+                    <div class="progress-bars">
+                        <div class="progress-item">
+                            <label>Steps Goal (10,000)</label>
+                            <div class="progress-bar">
+                                <div id="steps-progress" class="progress-fill"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <label>Water Goal (8 glasses)</label>
+                            <div class="progress-bar">
+                                <div id="water-progress" class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activity Section -->
+        <section id="activity" class="section">
+            <h2>Activity Tracking</h2>
+            <div class="activity-grid">
+                <!-- Step Counter -->
+                <div class="card">
+                    <h3>Step Counter</h3>
+                    <div class="step-counter">
+                        <button id="decrement-steps" class="btn">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span id="current-steps">0</span>
+                        <button id="increment-steps" class="btn">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Workout Log -->
+                <div class="card">
+                    <h3>Log Workout</h3>
+                    <form id="workout-form" class="form">
+                        <div class="form-group">
+                            <input type="text" id="workout-type" placeholder="Workout Type" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="workout-duration" placeholder="Duration (minutes)" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="workout-calories" placeholder="Calories Burned" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Workout</button>
+                    </form>
+                </div>
+
+                <!-- Workout History -->
+                <div class="card">
+                    <h3>Today's Workouts</h3>
+                    <div id="workout-history" class="history-list">
+                        <!-- Workouts will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nutrition Section -->
+        <section id="nutrition" class="section">
+            <h2>Nutrition Tracking</h2>
+            <div class="nutrition-grid">
+                <!-- Meal Log -->
+                <div class="card">
+                    <h3>Log Meal</h3>
+                    <form id="meal-form" class="form">
+                        <div class="form-group">
+                            <input type="text" id="meal-name" placeholder="Food Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="meal-calories" placeholder="Calories" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Meal</button>
+                    </form>
+                </div>
+
+                <!-- Water Tracker -->
+                <div class="card">
+                    <h3>Water Intake</h3>
+                    <div class="water-tracker">
+                        <button id="add-water" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Glass
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Meal History -->
+                <div class="card">
+                    <h3>Today's Meals</h3>
+                    <div id="meal-history" class="history-list">
+                        <!-- Meals will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <h2>Profile</h2>
+            <div class="profile-grid">
+                <!-- User Level and Badges -->
+                <div class="card">
+                    <h3>Achievements</h3>
+                    <div class="level-display">
+                        <div class="level-progress">
+                            <div class="level-circle">
+                                <span id="user-level">1</span>
+                            </div>
+                            <div class="level-info">
+                                <h4>Level 1</h4>
+                                <div class="progress-bar">
+                                    <div id="level-progress" class="progress-fill"></div>
+                                </div>
+                                <span id="xp-display">0/100 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="badges-container">
+                        <h4>Your Badges</h4>
+                        <div class="badges-grid">
+                            <div class="badge" id="steps-badge">
+                                <i class="fas fa-shoe-prints"></i>
+                                <span>Step Master</span>
+                            </div>
+                            <div class="badge" id="water-badge">
+                                <i class="fas fa-glass-water"></i>
+                                <span>Hydration Hero</span>
+                            </div>
+                            <div class="badge" id="streak-badge">
+                                <i class="fas fa-fire"></i>
+                                <span>7-Day Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Info Form -->
+                <div class="card">
+                    <h3>User Information</h3>
+                    <form id="profile-form" class="form">
+                        <div class="form-group">
+                            <input type="text" id="user-name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="user-age" placeholder="Age" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="user-weight" placeholder="Weight (kg)" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="user-height" placeholder="Height (cm)" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="user-goal" required>
+                                <option value="">Select Fitness Goal</option>
+                                <option value="weight-loss">Weight Loss</option>
+                                <option value="muscle-gain">Muscle Gain</option>
+                                <option value="maintenance">Maintenance</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Profile</button>
+                    </form>
+                </div>
+
+                <!-- BMI Calculator -->
+                <div class="card">
+                    <h3>BMI Calculator</h3>
+                    <div class="bmi-calculator">
+                        <div id="bmi-result" class="bmi-result">
+                            <!-- BMI result will be displayed here -->
+                        </div>
+                        <div class="bmi-categories">
+                            <div class="bmi-category">
+                                <span class="category-label">Underweight</span>
+                                <span class="category-range">< 18.5</span>
+                            </div>
+                            <div class="bmi-category">
+                                <span class="category-label">Normal</span>
+                                <span class="category-range">18.5 - 24.9</span>
+                            </div>
+                            <div class="bmi-category">
+                                <span class="category-label">Overweight</span>
+                                <span class="category-range">25 - 29.9</span>
+                            </div>
+                            <div class="bmi-category">
+                                <span class="category-label">Obese</span>
+                                <span class="category-range">≥ 30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alert Modal -->
+    <div id="alert-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="alert-title">Congratulations!</h3>
+            <p id="alert-message"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="gamification.js"></script>
+</body>
+</html>
