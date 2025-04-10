@@ -854,7 +854,7 @@ input, select {
 .footer {
     text-align: center;
     padding: 1rem;
-    background-color: rgb(188, 188, 188);
+   
     border-top: 1px solid var(--border-color);
 }
 
