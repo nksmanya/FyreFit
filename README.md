@@ -1,4 +1,5 @@
-# FyreFit 
+<img src="https://github.com/user-attachments/assets/966909d8-8d7b-40f1-9bb8-a46ef1ce06bd" alt="Fitness Tracker Screenshot" width="200"/>
+
 ## Fitness Tracker Website 🏋️‍♀️ 
 
 A feature-rich, user-friendly fitness tracker web application that helps users monitor their health and wellness activities including steps, calories, water intake, workouts, meals, journal entries, and profile management — all stored locally in the browser.
@@ -8,7 +9,7 @@ A feature-rich, user-friendly fitness tracker web application that helps users m
 
 - **HTML5**
 - **CSS3**
-- **Vanilla JavaScript**
+- **JavaScript**
 
 ##  Features 🚀
 
@@ -88,9 +89,21 @@ A feature-rich, user-friendly fitness tracker web application that helps users m
   - Goal achievements (steps, water)
   - Profile updates
   - Journal save confirmations
-
+  - 
 ---
+
 ### Screenshots 📸
+<img src="https://github.com/user-attachments/assets/1ff5981d-cb12-4f63-87a0-7847fbce66a4" width="500"/>  <img src="https://github.com/user-attachments/assets/edf0778b-6b28-4ef3-ae08-4bc7872a5a5e" width="500"/> 
+<img src="https://github.com/user-attachments/assets/a4e586e2-3406-4f9b-ae95-01b821f47a66" width="500"/> 
+<img src="https://github.com/user-attachments/assets/93ab9129-ab36-4d4b-929e-edbc61f98c54" width="500"/> 
 
 ---
 
+###  License 📃
+This project is open-source and available under the MIT License. 
+
+---
+### Contributing 🤝
+Contributions are welcome! If you'd like to improve this project, feel free to fork the repository and submit a pull request.
+
+---
