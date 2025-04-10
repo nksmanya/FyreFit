@@ -183,6 +183,12 @@ body {
     position: relative;
     overflow-x: hidden;
     transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 body::before {
@@ -268,12 +274,12 @@ body::before {
 
 /* Dark Mode Navigation Styles */
 .dark-mode .navbar {
-    background: var(--text-color);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background: #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .dark-mode .logo {
-    color: var(--primary-color);
+    color: white;
 }
 
 .dark-mode .logo i {
@@ -281,24 +287,25 @@ body::before {
 }
 
 .dark-mode .nav-links a {
-    color: var(--primary-color);
+    color: #ffffff;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
 }
 
 .dark-mode .nav-links a:hover {
-    background-color: rgba(255, 107, 53, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .nav-links a.active {
-    background-color: var(--primary-color);
-    color: white;
+    color: #ffffff;
 }
 
 .dark-mode .theme-toggle {
-    color: var(--primary-color);
+    color: #F7C59F;
 }
 
 .dark-mode .theme-toggle:hover {
-    background-color: rgba(255, 107, 53, 0.1);
+    background-color: rgba(255, 107, 53, 0.2);
 }
 
 /* Cards and Sections */
@@ -323,7 +330,7 @@ body::before {
     -webkit-backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0 rem;
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -350,6 +357,7 @@ h2 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
     display: inline-block;
+    margin-top: 1 rem;
 }
 
 h2::after {
@@ -839,4 +847,26 @@ input, select {
     align-items: flex-start;
     gap: 0.5rem;
     padding: 1rem;
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--accent-color);
+}
+
+.activity-grid, .nutrition-grid {
+    margin-bottom: 0;
 } 
