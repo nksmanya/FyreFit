@@ -21,6 +21,7 @@
                 <li><a href="#activity">Activity</a></li>
                 <li><a href="#nutrition">Nutrition</a></li>
                 <li><a href="#profile">Profile</a></li>
+                <li><a href="#journal"><i class="fas fa-book"></i> Journal</a></li>
                 <li><button id="theme-toggle" class="theme-toggle">
                     <i class="fas fa-moon"></i>
                 </button></li>
@@ -67,11 +68,17 @@
                             <i class="fas fa-utensils"></i>
                             <span id="total-food-calories">0</span>
                             <span>calories</span>
+                            <div class="progress-bar">
+                                <div id="calories-progress" class="progress-fill"></div>
+                            </div>
                         </div>
                         <div class="stat-item">
-                            <i class="fas fa-glass-water"></i>
+                            <i class="fas fa-water"></i>
                             <span id="total-water">0</span>
                             <span>glasses</span>
+                            <div class="progress-bar">
+                                <div id="water-progress" class="progress-fill"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,6 +147,11 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Activity Chart Section -->
+            <div class="activity-chart">
+                <canvas id="activityChart" width="400" height="200"></canvas>
+            </div>
         </section>
 
         <!-- Nutrition Section -->
@@ -164,6 +176,9 @@
                 <div class="card">
                     <h3>Water Intake</h3>
                     <div class="water-tracker">
+                        
+                        <p>Recommended Intake: 8 glasses</p>
+                        <p>Current Water Glasses: <span id="current-water-glasses">0</span></p>
                         <button id="add-water" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Add Glass
                         </button>
@@ -277,6 +292,65 @@
                 </div>
             </div>
         </section>
+
+        <!-- Journal Section -->
+        <section id="journal" class="section">
+            <h2>Fitness Journal</h2>
+            <div class="journal-grid">
+                <!-- New Entry -->
+                <div class="card">
+                    <h3>New Journal Entry</h3>
+                    <form id="journal-form" class="form">
+                        <div class="form-group">
+                            <input type="text" id="entry-title" placeholder="Entry Title" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="entry-mood" required>
+                                <option value="">How are you feeling?</option>
+                                <option value="energetic">🔋 Energetic</option>
+                                <option value="good">😊 Good</option>
+                                <option value="tired">😴 Tired</option>
+                                <option value="sore">🤕 Sore</option>
+                                <option value="motivated">💪 Motivated</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="entry-content" rows="6" placeholder="Write your thoughts, progress, or goals here..." required></textarea>
+                        </div>
+                        <div class="form-group entry-tags">
+                            <label>Tags:</label>
+                            <div class="tag-options">
+                                <label class="tag"><input type="checkbox" value="workout"> 🏋️‍♂️ Workout</label>
+                                <label class="tag"><input type="checkbox" value="nutrition"> 🥗 Nutrition</label>
+                                <label class="tag"><input type="checkbox" value="progress"> 📈 Progress</label>
+                                <label class="tag"><input type="checkbox" value="goals"> 🎯 Goals</label>
+                                <label class="tag"><input type="checkbox" value="motivation"> ⭐ Motivation</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Entry</button>
+                    </form>
+                </div>
+
+                <!-- Journal History -->
+                <div class="card journal-history">
+                    <h3>Your Journal</h3>
+                    <div class="journal-filters">
+                        <input type="text" id="search-journal" placeholder="Search entries...">
+                        <select id="filter-tags">
+                            <option value="">All Tags</option>
+                            <option value="workout">Workout</option>
+                            <option value="nutrition">Nutrition</option>
+                            <option value="progress">Progress</option>
+                            <option value="goals">Goals</option>
+                            <option value="motivation">Motivation</option>
+                        </select>
+                    </div>
+                    <div id="journal-entries" class="entries-list">
+                        <!-- Entries will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Alert Modal -->
@@ -290,5 +364,6 @@
 
     <script src="script.js"></script>
     <script src="gamification.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

@@ -76,7 +76,105 @@ navLinks.forEach(link => {
         });
     });
 });
+// Journal functionality
+const journalForm = document.getElementById('journal-form');
+const journalEntries = document.getElementById('journal-entries');
+const searchJournal = document.getElementById('search-journal');
+const filterTags = document.getElementById('filter-tags');
 
+// Journal entries array
+let journalData = [];
+
+// Load journal entries from localStorage
+function loadJournalEntries() {
+    const savedEntries = localStorage.getItem('journalEntries');
+    if (savedEntries) {
+        journalData = JSON.parse(savedEntries);
+        updateJournalDisplay();
+    }
+}
+
+// Save journal entries to localStorage
+function saveJournalEntries() {
+    localStorage.setItem('journalEntries', JSON.stringify(journalData));
+}
+
+// Add new journal entry
+journalForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const title = document.getElementById('entry-title').value;
+    const mood = document.getElementById('entry-mood').value;
+    const content = document.getElementById('entry-content').value;
+    const tags = Array.from(document.querySelectorAll('.tag input:checked'))
+        .map(checkbox => checkbox.value);
+    
+    const newEntry = {
+        id: Date.now(),
+        date: new Date().toISOString(),
+        title,
+        mood,
+        content,
+        tags
+    };
+    
+    journalData.unshift(newEntry);
+    saveJournalEntries();
+    updateJournalDisplay();
+    journalForm.reset();
+    
+    showAlert('Success', 'Journal entry saved!');
+});
+
+// Update journal display
+function updateJournalDisplay() {
+    const searchTerm = searchJournal.value.toLowerCase();
+    const filterTag = filterTags.value;
+    
+    const filteredEntries = journalData.filter(entry => {
+        const matchesSearch = entry.title.toLowerCase().includes(searchTerm) ||
+                            entry.content.toLowerCase().includes(searchTerm);
+        const matchesTag = !filterTag || entry.tags.includes(filterTag);
+        return matchesSearch && matchesTag;
+    });
+    
+    journalEntries.innerHTML = filteredEntries.map(entry => `
+        <div class="journal-entry">
+            <div class="entry-header">
+                <span class="entry-title">${entry.title}</span>
+                <span class="entry-date">${new Date(entry.date).toLocaleDateString()}</span>
+            </div>
+            <div>
+                <span class="entry-mood">${getMoodEmoji(entry.mood)}</span>
+            </div>
+            <div class="entry-content">${entry.content}</div>
+            <div class="entry-tags-list">
+                ${entry.tags.map(tag => `<span class="entry-tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+// Get mood emoji
+function getMoodEmoji(mood) {
+    const moodEmojis = {
+        energetic: '🔋',
+        good: '😊',
+        tired: '😴',
+        sore: '🤕',
+        motivated: '💪'
+    };
+    return moodEmojis[mood] || '😊';
+}
+
+// Search and filter functionality
+searchJournal.addEventListener('input', updateJournalDisplay);
+filterTags.addEventListener('change', updateJournalDisplay);
+
+// Initialize journal
+document.addEventListener('DOMContentLoaded', () => {
+    loadJournalEntries();
+});
 // Profile Form
 const profileForm = document.getElementById('profile-form');
 profileForm.addEventListener('submit', (e) => {
@@ -219,6 +317,7 @@ addWater.addEventListener('click', () => {
 
 function updateWaterIntake() {
     document.getElementById('total-water').textContent = dailyStats.waterGlasses;
+    document.getElementById('current-water-glasses').textContent = dailyStats.waterGlasses;
     document.getElementById('water-progress').style.width = `${Math.min(100, (dailyStats.waterGlasses / 8) * 100)}%`;
     saveData();
 }
@@ -262,4 +361,43 @@ window.addEventListener('click', (e) => {
 // Initialize
 loadData();
 updateSteps();
-updateWaterIntake(); 
+updateWaterIntake();
+
+// Initialize the chart after data is loaded
+initializeActivityChart();
+
+// Initialize Chart.js
+function initializeActivityChart() {
+    console.log('Initializing Activity Chart');
+    console.log('Daily Stats:', dailyStats);
+    const ctx = document.getElementById('activityChart').getContext('2d');
+    const activityChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Steps', 'Calories Burned', 'Water Glasses'],
+            datasets: [{
+                label: 'Daily Activity',
+                data: [dailyStats.steps, dailyStats.caloriesBurned, dailyStats.waterGlasses],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    console.log('Chart Initialized');
+} 

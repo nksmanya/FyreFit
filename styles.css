@@ -11,7 +11,151 @@
     --gradient-1: linear-gradient(135deg, #FF6B35, #EF476F);
     --gradient-2: linear-gradient(135deg, #F7C59F, #FF6B35);
 }
+/* Journal Styles */
+.journal-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
 
+/* Journal Form */
+#journal-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    resize: vertical;
+    min-height: 150px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.dark-mode #journal-form textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+#journal-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+}
+
+/* Tags */
+.entry-tags {
+    margin-top: 1rem;
+}
+
+.tag-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .tag {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.tag input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+/* Journal History */
+.journal-history {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.journal-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.journal-filters input,
+.journal-filters select {
+    flex: 1;
+}
+
+.entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.journal-entry {
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.journal-entry:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.entry-title {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.entry-date {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.entry-mood {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.entry-content {
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.entry-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.entry-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.9rem;
+}
 /* Dark Mode Variables */
 .dark-mode {
     --primary-color: #FF6B35;
@@ -687,4 +831,12 @@ input, select {
 
 .dark-mode .badge.earned {
     background: var(--gradient-1);
+}
+
+.water-tracker {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
 } 
