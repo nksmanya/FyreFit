@@ -15,7 +15,7 @@
 .journal-grid {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
 }
 
 /* Journal Form */
@@ -677,7 +677,10 @@ input, select {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
+.profile-grid {
+    display: flex;
+    gap: 1.5rem;
+}
 /* Mobile Navigation */
 @media (max-width: 767px) {
     .nav-links {
@@ -868,4 +871,8 @@ input, select {
 
 .activity-grid, .nutrition-grid {
     margin-bottom: 0;
+}
+
+.profile-grid, .journal-grid {
+    grid-template-columns: repeat(2, 2fr);
 } 
