@@ -854,12 +854,12 @@ input, select {
 .footer {
     text-align: center;
     padding: 1rem;
-    background-color: var(--card-bg);
+    background-color: rgb(188, 188, 188);
     border-top: 1px solid var(--border-color);
 }
 
 .footer a {
-    color: var(--primary-color);
+    color: blue;
     text-decoration: none;
     margin: 0 0.5rem;
     transition: color 0.3s ease;
