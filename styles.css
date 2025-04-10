@@ -285,7 +285,6 @@ body::before {
 .dark-mode .logo i {
     color: var(--primary-color);
 }
-
 .dark-mode .nav-links a {
     color: #ffffff;
     border-bottom: 2px solid transparent;
