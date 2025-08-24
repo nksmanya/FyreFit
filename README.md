@@ -89,7 +89,7 @@ A feature-rich, user-friendly fitness tracker web application that helps users m
   - Goal achievements (steps, water)
   - Profile updates
   - Journal save confirmations
-  - 
+  
 ---
 
 ### Screenshots 📸
