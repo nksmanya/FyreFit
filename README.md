@@ -99,11 +99,64 @@ A feature-rich, user-friendly fitness tracker web application that helps users m
 
 ---
 
+## 🤝 How to Contribute
+
+Contributions are welcome! 🎉
+
+#### 📝 Steps to Contribute
+
+1. **Fork the Repository**
+   
+    Click the **Fork** button (top right of the repo page) to create your own copy.
+
+2. **Clone Your Fork**
+   
+    ```bash
+    git clone https://github.com/<your-username>/FyreFit.git
+    cd FyreFit
+    ```
+
+3. **Create a New Branch**
+   
+   Use a meaningful branch name related to your contribution.
+
+   ```bash
+   git checkout -b feat/add-new-feature
+   ```
+
+4. **Make Your Changes**
+   
+- Add new features/bug fixes in `FyreFit app`
+- Or update HTML/CSS/JS for improvements
+- Make sure everything works by running it
+
+5. **Commit Your Changes**
+   
+    Write a clear commit message:
+
+    ```bash
+    git add .
+    git commit -m "feat: added a new xyz feature"
+    ```
+
+
+6. **Push to Your Fork**
+   
+    ```bash   
+    git push origin feat/add-new-feature
+    ```
+
+
+7. **Open a Pull Request (PR)**
+
+- Go to the original repository
+
+- Click **Compare & Pull Request**
+
+- Add a short description of your changes
+
+---
+
 ###  License 📃
 This project is open-source and available under the MIT License. 
 
----
-### Contributing 🤝
-Contributions are welcome! If you'd like to improve this project, feel free to fork the repository and submit a pull request.
-
----
